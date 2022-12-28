@@ -1,0 +1,10 @@
+.screen {
+  background-color: #63a885;
+  padding: 15px;
+  min-height: 86px;
+  font-size: 3em;
+  border-radius: 4px;
+  text-align: right;
+  overflow-wrap: break-word;
+  box-shadow: 1px 1px 2px 5px #ddd;
+}
