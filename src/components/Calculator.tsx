@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import useCalculator from '../hooks/useCalculator';
 
 import Screen from './Screen';
 import Button from './Button';
@@ -6,38 +6,38 @@ import Button from './Button';
 import styles from './Calculator.module.css';
 
 const Calculator = () => {
-  const [inputBtn, setInputBtn] = useState<string[]>([]);
-  const [numericExpression, setNumericExpression] = useState<string>('');
-
-  const inputSet = (text: string): void => {
-    // setInputBtn([...inputBtn, text]);
-    // setNumericExpression((previousValue) => inputBtn.join(''));
-  };
-
-  useEffect(() => {}, [inputBtn, numericExpression]);
+  const [
+    digits,
+    operations,
+    extraFunctions,
+    equal,
+    screenText,
+    message,
+    setEntry
+  ] = useCalculator('');
 
   return (
     <div className={styles.calculator}>
-      <Screen text={numericExpression} />
+      <Screen text={screenText} />
       <div className={styles.keys}>
-        <Button text="7" changeFunction={inputSet} />
-        <Button text="8" changeFunction={inputSet} />
-        <Button text="9" changeFunction={inputSet} />
-        <Button text="CE" changeFunction={inputSet} />
-        <Button text="C" changeFunction={inputSet} />
-        <Button text="4" changeFunction={inputSet} />
-        <Button text="5" changeFunction={inputSet} />
-        <Button text="6" changeFunction={inputSet} />
-        <Button text="*" changeFunction={inputSet} />
-        <Button text="/" changeFunction={inputSet} />
-        <Button text="1" changeFunction={inputSet} />
-        <Button text="2" changeFunction={inputSet} />
-        <Button text="3" changeFunction={inputSet} />
-        <Button text="+" changeFunction={inputSet} />
-        <Button text="-" changeFunction={inputSet} />
-        <Button text="0" changeFunction={inputSet} />
-        <Button text="." changeFunction={inputSet} />
-        <Button text="=" changeFunction={inputSet} />
+        <Button text={digits[7]} changeFunction={setEntry} />
+        <Button text={digits[8]} changeFunction={setEntry} />
+        <Button text={digits[9]} changeFunction={setEntry} />
+        <Button text={extraFunctions[0]} changeFunction={setEntry} />
+        <Button text={extraFunctions[1]} changeFunction={setEntry} />
+        <Button text={digits[4]} changeFunction={setEntry} />
+        <Button text={digits[5]} changeFunction={setEntry} />
+        <Button text={digits[6]} changeFunction={setEntry} />
+        <Button text={operations[2]} changeFunction={setEntry} />
+        <Button text={operations[3]} changeFunction={setEntry} />
+        <Button text={digits[1]} changeFunction={setEntry} />
+        <Button text={digits[2]} changeFunction={setEntry} />
+        <Button text={digits[3]} changeFunction={setEntry} />
+        <Button text={operations[0]} changeFunction={setEntry} />
+        <Button text={operations[1]} changeFunction={setEntry} />
+        <Button text={digits[0]} changeFunction={setEntry} />
+        <Button text={digits[10]} changeFunction={setEntry} />
+        <Button text={equal[0]} changeFunction={setEntry} />
       </div>
     </div>
   );
