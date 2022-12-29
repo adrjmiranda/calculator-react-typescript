@@ -72,14 +72,14 @@ export default function useCalculator(
     if (isDigit(entry) || isOperation(entry)) {
       setScreenText((prevState) => prevState + entry);
     } else {
-      applyExtraFunction(entry, screenText);
+      applyExtraFunction(entry);
       if (isEqual(entry)) {
         solveExpression(screenText);
       }
     }
   };
 
-  const applyExtraFunction = (entry: string, text: string): void => {
+  const applyExtraFunction = (entry: string): void => {
     switch (entry) {
       case extraFunctions[0]:
         setScreenText((prevState) => prevState.slice(0, -1));
