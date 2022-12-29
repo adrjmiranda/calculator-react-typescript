@@ -3,6 +3,8 @@
   padding: 20px;
   border-radius: 8px;
   max-width: 347px;
+  display: flex;
+  flex-direction: column;
 }
 
 .keys {
@@ -10,4 +12,22 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: .5em;
   margin-top: 1em;
+}
+
+/* responsive */
+
+@media screen and (max-width: 360px) {
+  .calculator {
+    width: 90%;
+  }
+
+  .keys {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 230px) {
+  .keys {
+    grid-template-columns: 1fr 1fr;
+  }
 }

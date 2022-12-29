@@ -2,6 +2,7 @@ import useCalculator from '../hooks/useCalculator';
 
 import Screen from './Screen';
 import Button from './Button';
+import FeedbackScreen from './FeedbackScreen';
 
 import styles from './Calculator.module.css';
 
@@ -12,12 +13,13 @@ const Calculator = () => {
     extraFunctions,
     equal,
     screenText,
-    message,
+    screenMessage,
     setEntry
   ] = useCalculator('');
 
   return (
     <div className={styles.calculator}>
+      <FeedbackScreen text={screenMessage.text} type={screenMessage.type} />
       <Screen text={screenText} />
       <div className={styles.keys}>
         <Button text={digits[7]} changeFunction={setEntry} />

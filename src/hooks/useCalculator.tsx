@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { message } from '../types/message';
+
 export default function useCalculator(
   entry: string
 ): [
@@ -8,11 +10,14 @@ export default function useCalculator(
   string[],
   string[],
   string,
-  string,
+  message,
   (entry: string) => void
 ] {
   const [screenText, setScreenText] = useState<string>('');
-  const [message, setMessage] = useState<string>('');
+  const [screenMessage, setScreenMessage] = useState<message>({
+    text: '',
+    type: 'success'
+  });
 
   const digits: string[] = [
     '0',
@@ -68,8 +73,7 @@ export default function useCalculator(
       setScreenText((prevState) => prevState + entry);
     } else {
       applyExtraFunction(entry, screenText);
-      if (isExtraFunction(entry)) {
-      } else if (isEqual(entry)) {
+      if (isEqual(entry)) {
         solveExpression(screenText);
       }
     }
@@ -83,17 +87,29 @@ export default function useCalculator(
       case extraFunctions[1]:
         setScreenText('');
         break;
-      default:
-        setMessage('InválidInput');
     }
+
+    setScreenMessage({
+      ...screenMessage,
+      text: ''
+    });
   };
 
   const solveExpression = (expression: string): void => {
     try {
       const result: number = eval(expression);
       setScreenText(result.toString());
+      setScreenMessage({
+        ...screenMessage,
+        text: 'Solved',
+        type: 'success'
+      });
     } catch (error) {
-      setMessage('SyntaxError');
+      setScreenMessage({
+        ...screenMessage,
+        text: 'SyntaxError',
+        type: 'error'
+      });
     }
   };
 
@@ -103,7 +119,7 @@ export default function useCalculator(
     extraFunctions,
     equal,
     screenText,
-    message,
+    screenMessage,
     setEntry
   ];
 }

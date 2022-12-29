@@ -1,0 +1,30 @@
+.feedbackScreen {
+  width: 150px;
+  height: 50px;
+  background-color: #dcd08c;
+  margin-bottom: 1em;
+  border-radius: .3em;
+  border: 2px solid #7f5f06;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.error {
+  color: #7a0303;
+}
+
+.success {
+  color: #015a01;
+}
+
+/* responsive */
+
+@media screen and (max-width: 360px) {
+  .feedbackScreen {
+    max-width: 100%;
+  }
+}
